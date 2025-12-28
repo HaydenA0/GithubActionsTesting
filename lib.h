@@ -1,0 +1,1 @@
+int libCustomFunction(void);
