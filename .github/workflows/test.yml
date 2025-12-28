@@ -1,12 +1,18 @@
-name: Run Tests
+name: Build and Test
 on: [push, pull_request]
 
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Compile test.c and lib.c
+
+      - name: Build main program
+        run: gcc main.c lib.c -o binaryoutput
+
+      - name: Build test program
         run: gcc test.c lib.c -o testbinary
-      - name: Run test binary
+
+      - name: Run tests
         run: ./testbinary
+
